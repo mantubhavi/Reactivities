@@ -7,7 +7,7 @@ namespace Application.Activities.Quries;
 
 public class GetActivityList
 {
-    public class Query : IRequest<List<Activity>> {}
+    public class Query : IRequest<List<Activity>> { }
 
     public class Handlers(AppDbContext context) : IRequestHandler<Query, List<Activity>>
     {

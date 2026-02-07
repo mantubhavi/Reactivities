@@ -1,3 +1,4 @@
+using Application.Activities.Commands;
 using Application.Activities.Quries;
 using Domain;
 using MediatR;
@@ -24,6 +25,19 @@ public class ActivitiesController : BaseAPIController
     [HttpGet("{id}")]
     public async Task<ActionResult<Activity>> GetActivityDetails(string id)
     {
-       return await Mediator.Send(new GetActivityDetails.Query { Id = id });
+        return await Mediator.Send(new GetActivityDetails.Query { Id = id });
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<string>> CreateActivity(Activity activity)
+    {
+        return await Mediator.Send(new CreateActivity.Command { Activity = activity });
+    }
+
+    [HttpPut]
+    public async Task<ActionResult> EditActivity(Activity activity)
+    {
+        await Mediator.Send(new EditActivity.Command { Activity = activity });
+        return NoContent();
     }
 }
