@@ -484,3 +484,5 @@ API/reactivity.db
 API/bin*
 
 
+API/reactivity.db-shm
+API/reactivity.db-wal
