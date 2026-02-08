@@ -1,7 +1,7 @@
 using Application.Activities.Commands;
+using Application.Activities.DTOs;
 using Application.Activities.Quries;
 using Domain;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Persistence;
 
@@ -29,9 +29,9 @@ public class ActivitiesController : BaseAPIController
     }
 
     [HttpPost]
-    public async Task<ActionResult<string>> CreateActivity(Activity activity)
+    public async Task<ActionResult<string>> CreateActivity(CreateActivityDTO activity)
     {
-        return await Mediator.Send(new CreateActivity.Command { Activity = activity });
+        return await Mediator.Send(new CreateActivity.Command { ActivityDTO = activity });
     }
 
     [HttpPut]

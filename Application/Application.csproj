@@ -19,6 +19,7 @@
   <ItemGroup>
     <Folder Include="Activities/" />
     <Folder Include="Activities/Commands/" />
+    <Folder Include="Activities/DTOs/" />
     <Folder Include="Activities/Quries/" />
     <Folder Include="Mapping/" />
   </ItemGroup>
