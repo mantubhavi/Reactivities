@@ -1,4 +1,5 @@
 using Application.Activities.Quries;
+using Application.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
@@ -11,7 +12,8 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddMediatR(x=>x.RegisterServicesFromAssemblyContaining<GetActivityList.Handlers>());
+builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining<GetActivityList.Handlers>());
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 var app = builder.Build();
 
@@ -27,7 +29,7 @@ try
     await context.Database.MigrateAsync();
     await DbInitializer.SeedData(context);
 }
-catch(Exception ex)
+catch (Exception ex)
 {
     var log = services.GetRequiredService<ILogger<Program>>();
     log.LogError(ex, "An error occured during migration.");
