@@ -1,5 +1,7 @@
 using Application.Activities.Quries;
+using Application.Activities.Validators;
 using Application.Mapping;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
@@ -14,6 +16,8 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 
 builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining<GetActivityList.Handlers>());
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateActivityValidator>();
 
 var app = builder.Build();
 
