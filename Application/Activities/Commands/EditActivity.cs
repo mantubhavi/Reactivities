@@ -7,7 +7,7 @@ namespace Application.Activities.Commands;
 
 public class EditActivity
 {
-    public class Command : IRequest 
+    public class Command : IRequest
     {
         public required Activity Activity { get; set; }
     }

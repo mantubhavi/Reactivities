@@ -14,12 +14,10 @@ public class CreateActivity
         public required CreateActivityDTO ActivityDTO { get; set; }
     }
 
-    public class Handler(AppDbContext context, IMapper mapper, IValidator<Command> validator) : IRequestHandler<Command, string>
+    public class Handler(AppDbContext context, IMapper mapper) : IRequestHandler<Command, string>
     {
         public async Task<string> Handle(Command request, CancellationToken cancellationToken)
         {
-            await validator.ValidateAndThrowAsync(request,cancellationToken);
-
             var activity = mapper.Map<Activity>(request.ActivityDTO);
 
             context.Activities.Add(activity);
