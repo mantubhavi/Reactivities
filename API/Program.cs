@@ -1,6 +1,6 @@
 using Application.Activities.Quries;
 using Application.Activities.Validators;
-using Application.Mapping;
+using Application.Core;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
