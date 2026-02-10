@@ -10,5 +10,6 @@ public class MappingProfile : Profile
     {
         CreateMap<Activity, Activity>();
         CreateMap<CreateActivityDTO, Activity>();
+        CreateMap<EditActivityDTO, Activity>();
     }
 }
