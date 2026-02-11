@@ -15,6 +15,14 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("Reactivity_Cors",
+        x => x.AllowAnyHeader()
+        .AllowAnyMethod()
+        .WithOrigins("http://localhost:3000"));
+});
+
 builder.Services.AddMediatR(x =>
 {
     x.RegisterServicesFromAssemblyContaining<GetActivityList.Handlers>();
@@ -31,6 +39,9 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline
 app.UseMiddleware<ExceptionMiddleware>();
+
+app.UseCors("Reactivity_Cors");
+
 app.MapControllers();
 
 using var scope = app.Services.CreateScope();
