@@ -19,7 +19,7 @@ builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("Reactivity_Cors",
         x => x.AllowAnyHeader()
-        .AllowAnyMethod()
+        .WithMethods("GET","POST","DELETE","PUT")
         .WithOrigins("http://localhost:3000"));
 });
 
